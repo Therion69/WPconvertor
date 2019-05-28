@@ -1,0 +1,1 @@
+foreach ($file in $(Get-ChildItem Uitvoer*.txt)) { Write-Host $file.name - $(Get-Content $file) }
