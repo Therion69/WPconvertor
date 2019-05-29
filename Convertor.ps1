@@ -39,14 +39,15 @@ $MaxItems = 300      # Maximaal aantal regels per file
 $FileCounter = 1     # Teller die het nummer van de uitvoerfile bijhoud
 $ItemCount = 0       # Teller die bijhoud hoeveel regels al in de huidige uitvoerfile staan
 $LineCount = 0       # Teller die bijhoud hoeveel regels in totaal reeds verwerkt zijn
-$Koptekst = Get-Content OutHeader.txt
+$ScriptPath = Split-path $MyInvocation.MyCommand.Definition
+$Koptekst = Get-Content $Scriptpath\OutHeader.txt
 
 # Hoofdprogramma
 foreach ($item in $lijst)
 {
    If ($ItemCount -eq 0)
    {
-      $Uitvoer = Get-Content OutPrefix.txt
+      $Uitvoer = Get-Content $Scriptpath\OutPrefix.txt
    }
    $Uitvoer += $item.Documentnummer+";"+$item.Relatie[0]+$item.Relatie[1]+"-"+$item.Documentnummer
    $ItemCount += 1
